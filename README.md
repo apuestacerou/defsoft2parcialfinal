@@ -223,10 +223,10 @@ POST http://localhost:3003/api/sales
 - Humberto Fajardo
 ## VIDEO -> https://www.youtube.com/watch?v=DPsMbNaxVBg)
 
-##Entrega 1
+## Entrega 1
 https://github.com/juanmolina04/Devsoft-Semana10.git
 
-##Entrega 2
+## Entrega 2
 https://github.com/apuestacerou/segunda-fase
 
 

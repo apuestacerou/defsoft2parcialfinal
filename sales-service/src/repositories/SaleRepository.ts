@@ -54,7 +54,7 @@ export class SaleRepository {
     };
   }
 
-  async create(saleData: CreateSaleRequest, transaction?: Transaction): Promise<Sale> {
+  async create(saleData: CreateSaleRequest, transaction?: Transaction): Promise<SaleModel> {
     const t = transaction || (await sequelize.transaction());
 
     try {
@@ -81,8 +81,8 @@ export class SaleRepository {
         await t.commit();
       }
 
-      // Retornar la venta completa
-      return this.findById(sale.id) as Promise<Sale>;
+      // Retornar el modelo de venta (no hacer query)
+      return sale;
     } catch (error) {
       if (!transaction) {
         await t.rollback();

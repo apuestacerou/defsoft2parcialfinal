@@ -113,8 +113,17 @@ export class SaleService {
     try {
       console.log('Sales Service: Creando venta en base de datos');
       // Crear la venta
-      const sale = await this.saleRepository.create(saleData, transaction);
-      console.log('Sales Service: Venta creada con ID:', sale.id);
+      const saleModel = await this.saleRepository.create(saleData, transaction);
+      console.log('Sales Service: Venta creada con ID:', saleModel.id);
+
+      // Convertir a objeto Sale
+      const sale = {
+        id: saleModel.id,
+        cliente_id: saleModel.cliente_id,
+        total: 0, // Se actualizará después
+        fecha_venta: saleModel.fecha_venta,
+        productos: [] // Se llenará después
+      };
 
       // Actualizar precios en los productos de la venta y reducir stock
       for (const saleProduct of saleData.productos) {
@@ -135,13 +144,13 @@ export class SaleService {
 
       console.log('Sales Service: Actualizando total de la venta:', total);
       // Actualizar el total de la venta
-      await this.saleRepository.updateTotal(sale.id!, total, transaction);
+      await this.saleRepository.updateTotal(saleModel.id!, total, transaction);
 
       await transaction.commit();
       console.log('Sales Service: Transacción completada exitosamente');
 
       // Retornar la venta completa
-      const finalSale = await this.getSaleById(sale.id!);
+      const finalSale = await this.getSaleById(saleModel.id!);
       console.log('Sales Service: Venta completada:', finalSale);
       return finalSale as Sale;
     } catch (error) {

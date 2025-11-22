@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  clients-service:
+    build:
+      context: ./clients-service
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    volumes:
+      - clients-db:/app/clients_database.sqlite
+    networks:
+      - microservices-network
+
+  products-service:
+    build:
+      context: ./products-service
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+      - PORT=3002
+    volumes:
+      - products-db:/app/products_database.sqlite
+    networks:
+      - microservices-network
+    depends_on:
+      - clients-service
+
+  sales-service:
+    build:
+      context: ./sales-service
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"
+    environment:
+      - NODE_ENV=production
+      - PORT=3003
+      - CLIENTS_SERVICE_URL=http://clients-service:3001/api
+      - PRODUCTS_SERVICE_URL=http://products-service:3002/api
+    volumes:
+      - sales-db:/app/sales_database.sqlite
+    networks:
+      - microservices-network
+    depends_on:
+      - clients-service
+      - products-service
+
+volumes:
+  clients-db:
+  products-db:
+  sales-db:
+
+networks:
+  microservices-network:
+    driver: bridge

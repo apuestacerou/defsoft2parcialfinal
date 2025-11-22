@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+*/node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+*/dist/
+**/dist/
+
+# Databases
+*.sqlite
+*.db
+database.sqlite
+clients_database.sqlite
+products_database.sqlite
+sales_database.sqlite
+
+# Logs
+*.log
+logs/
+*/logs/
+**/logs/
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Build artifacts
+build/
+out/

@@ -222,6 +222,14 @@ POST http://localhost:3003/api/sales
 - Sebastián Molina
 - Humberto Fajardo
 ## VIDEO -> https://www.youtube.com/watch?v=DPsMbNaxVBg)
+
+##Entrega 1
+https://github.com/juanmolina04/Devsoft-Semana10.git
+
+##Entrega 2
+https://github.com/apuestacerou/segunda-fase
+
+
 ## Licencia
 
 Este proyecto es parte de la entrega académica para el curso de Desarrollo de Software 2.

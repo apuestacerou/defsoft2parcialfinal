@@ -221,7 +221,7 @@ POST http://localhost:3003/api/sales
 
 - Sebastián Molina
 - Humberto Fajardo
-
+## VIDEO -> https://github.com/apuestacerou/defsoft2parcialfinal/blob/master/README.md
 ## Licencia
 
 Este proyecto es parte de la entrega académica para el curso de Desarrollo de Software 2.
